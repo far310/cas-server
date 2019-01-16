@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>云合中央认证系统</title>
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+        <!-- 引入样式 -->
+		<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+
+        <style>
+
+            footer{
+                height:60px;
+                position:fixed;
+                bottom:0;
+                left:0px;
+                width: 100%
+            }
+            *{
+                padding: 0px;
+                margin: 0px;
+            }
+        </style>
+	</head>
+	<body>
+		<div id="app">
+            <el-container>
+                <el-header style="background-color: #20a0ff;color: #fff;">
+                    <el-col style="font-size: 43px" :span="10">
+                        ADMIN
+                    </el-col>
+                    <el-col :span="10">
+                        <div class="tools">
+                            <i class="fa fa-align-justify">&nbsp;</i>
+                        </div>
+                    </el-col>
+                    <el-col :span="4" class="userinfo">
+                        <el-dropdown trigger="hover">
+                            <span class="el-dropdown-link userinfo-inner"><img style="width: 40px;height: 40px;border-radius: 20px;margin: 10px 0px 10px 10px;float: right;" src="https://img-1256499519.cos.ap-guangzhou.myqcloud.com/static/img/1.jpg"></span>
+                            <el-dropdown-menu slot="dropdown">
+                                <el-dropdown-item>我的消息</el-dropdown-item>
+                                <el-dropdown-item>设置</el-dropdown-item>
+                                <el-dropdown-item divided @click.native="logout">退出登录</el-dropdown-item>
+                            </el-dropdown-menu>
+                        </el-dropdown>
+                    </el-col>
+                </el-header>
+                <el-container>
+                    <el-aside width="20%">云合科技</el-aside>
+                    <el-main>
+                        <el-row>
+                            <el-row :gutter="20">
+                                <el-col :span="24" style="height: 400px;">12312</el-col>
+                                <el-col :span="6"> <el-button type="primary" @click.native="getPage(0)" size="medium " circle>学校后台管理WEB</el-button></el-col>
+                                <el-col :span="6"> <el-button type="success" @click.native="getPage(1)"  size="medium " circle>教师课堂教学互动WEB</el-button></el-col>
+                                <el-col :span="6"> <el-button type="info" @click.native="getPage(2)"  size="medium " circle>教师课后备课WEB</el-button></el-col>
+                                <el-col :span="6"> <el-button type="warning" @click.native="getPage(3)"  size="medium " circle>学校考勤管理WEB</el-button></el-col>
+                            </el-row>
+                        </el-row>
+                    </el-main>
+                </el-container>
+                <el-footer style="text-align: right">
+                    版权所有 © 2018 - 2020 深圳云合科技, Inc. 保留全部权利。
+                </el-footer>
+            </el-container>
+        </div>
+
+        <!-- 生产环境版本，优化了尺寸和速度 -->
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+        <!-- 引入组件库 -->
+        <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+        <script>
+            var Main = {
+                data() {
+                    return {
+
+                    }
+
+                },
+                methods:{
+                    logout(){
+                        location.href = "logout";
+                    },
+                    getPage(id){
+                        if(id ==0){
+                            location.href = "getPage?url=" + "http://localhost:8081/iCloudy/production/index.html";
+                        }
+                    }
+                }
+            }
+            var Ctor = Vue.extend(Main)
+            new Ctor().$mount('#app')
+        </script>
+	</body>
+</html>
